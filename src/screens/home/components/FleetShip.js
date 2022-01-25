@@ -2,8 +2,8 @@ import { Box, IconButton } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EditIcon from "@mui/icons-material/Edit";
-import LinearProgress from '@mui/material/LinearProgress';
 import './fleetShip.css';
+import ShipbarPassengers from '../../shipDetail/components/Shipbar';
 
 const FleetShip = ({ starship, selectedNumber}) => {
   let {
@@ -26,7 +26,7 @@ const FleetShip = ({ starship, selectedNumber}) => {
         <div>{name}</div>
         <div>{model}</div>
         <Box sx={{ width: '100%' }}>
-           <LinearProgressWithLabel value={progress} />
+           <ShipbarPassengers value={progress} />
         </Box>
       </div>
     </div>
@@ -53,16 +53,6 @@ function percentageOccupancy(crew, passengers){
   const percentageOccupancy = (100 *  crewNumber) / passengersNumber;
 
   return percentageOccupancy > 100 ? 100 : percentageOccupancy
-}
-
-function LinearProgressWithLabel(props) {
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-    </Box>
-  );
 }
 
 

@@ -7,6 +7,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { bindActionCreators } from 'redux'
 import { editShipFleet } from '../../actions'
 import { useHistory } from "react-router-dom";
+import { makeStyles } from '@material-ui/styles';
+import ShipbarPassengers from './components/Shipbar';
 
 
 
@@ -32,7 +34,6 @@ const ShipDetail = ({ match: { params }, fleet , editShipFleet}) =>
     console.log(fleetUpdated)
     editShipFleet(fleetUpdated, index)
   }
-  
 
   return(
   <div id="shipDetail">
@@ -43,12 +44,12 @@ const ShipDetail = ({ match: { params }, fleet , editShipFleet}) =>
         <h4>Passengers: {crewState} </h4>
         <div>
           <Box sx={{ width: '50%', marginTop: 2 }}>
-            <LinearProgressWithLabel value={progress} />
+            <ShipbarPassengers value={progress} />
           </Box>
-          <IconButton onClick={() => { setCrew(removePassengers(passengers, crewState)) }}>
+          <IconButton onClick={() => { setCrew(editPassengers(passengers, crewState, 'remove')) }}>
             <RemoveIcon/>
           </IconButton>
-          <IconButton  onClick={() => { setCrew(addPassengers(passengers, crewState)) }}>
+          <IconButton  onClick={() => { setCrew(editPassengers(passengers, crewState, 'add')) }}>
               <AddIcon/>
           </IconButton>
         </div>
@@ -62,7 +63,7 @@ const ShipDetail = ({ match: { params }, fleet , editShipFleet}) =>
 }
 
 
-function addPassengers(passengers, crew){
+function editPassengers(passengers, crew, action){
   let crewNumber = crew;
   if(typeof crew === 'string'){
     crewNumber = parseFloat(crew.replace(/,/g, ''));
@@ -70,22 +71,10 @@ function addPassengers(passengers, crew){
   if(passengers < crewNumber){
     return crewNumber
   }
-  crewNumber = crewNumber + 1
-  return crewNumber;
+
+  return action === 'add' ? crewNumber + 1 : crewNumber - 1
 }
 
-function removePassengers(passengers, crew){
-  let crewNumber = crew;
-  if(typeof crew === 'string'){
-    crewNumber = parseFloat(crew.replace(/,/g, ''));
-  }
-  if(crewNumber <= 0){
-    return 0
-  }
-
-  crewNumber = crewNumber - 1
-  return crewNumber;
-}
 
 function transformPassengersNumber(passengers){
   let passengersNumber = Number(passengers);
@@ -111,15 +100,6 @@ function percentageOccupancy(crew, passengers){
   return percentageOccupancy > 100 ? 100 : percentageOccupancy
 }
 
-function LinearProgressWithLabel(props) {
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-    </Box>
-  );
-}
 
 const mapStateToProps = (state) => {
   return {
