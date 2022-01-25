@@ -30,7 +30,7 @@ const Ship = ({ addShipFleet, ship, fleet }) => {
         </IconButton>
       }
     >
-      <ListItemText primary={`Line item ${name}`} />
+      <ListItemText primary={`${name} - ${model}`} />
       </ListItem>
 
     </div>
