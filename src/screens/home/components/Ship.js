@@ -9,9 +9,7 @@ import { connect } from 'react-redux';
 const Ship = ({ addShipFleet, ship, fleet }) => {
   let {
     name,
-    model,
-    crew,
-    passengers
+    model
   } = ship;
 
   const addShip = (starShipSelected) => {

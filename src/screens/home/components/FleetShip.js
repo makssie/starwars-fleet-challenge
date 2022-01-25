@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import EditIcon from "@mui/icons-material/Edit";
 import LinearProgress from '@mui/material/LinearProgress';
-import Typography from '@mui/material/Typography';
 import './fleetShip.css';
 
 const FleetShip = ({ starship, selectedNumber}) => {
@@ -13,13 +12,14 @@ const FleetShip = ({ starship, selectedNumber}) => {
     crew,
     passengers
   } = starship;
-  console.log(crew, passengers)
   const progress = percentageOccupancy(crew, passengers);
   return (
     <div className="fleetShip">
       <div>
         <IconButton>
-          <EditIcon/>
+          <Link className="book" to={`shipDetail/${selectedNumber}`}>
+            <EditIcon/>
+          </Link>
         </IconButton>
       </div>
       <div className="fleetDetail">
