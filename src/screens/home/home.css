@@ -1,5 +1,25 @@
 .home-container {
+  margin-top: 20px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+#home{
+  padding: 16px 24px
+}
+
+.fleet-container {
+  border-radius: 20px;
+  /* background-color: black; */
+  /* border: solid white 2px; */
+  text-align: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: rgb(0 0 0 / 80%) 0px 0 10px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  box-shadow: rgb(221 221 221 / 80%) 0 0 10px;
+  padding: 20px;
+  flex-grow: 2;
 }

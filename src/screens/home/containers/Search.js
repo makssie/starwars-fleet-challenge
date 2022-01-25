@@ -20,7 +20,8 @@ const Search = ({ query, getShips  }) => {
   return (
     <div className="search-ships">
     <TextField
-      label="Type a star wars shipstar"
+      label="Type a star wars shipstar name."
+      fullWidth
       InputProps={{
         endAdornment: (
           <InputAdornment position='end'>

@@ -7,19 +7,25 @@ import store, { history } from './configureStore';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Home from './screens/home';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './theme'
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div className="app">
         <Switch>
           <Route exact path="/" component={Home}/>
-          {/* <Route path="/book/:ID" component={Book}/> */}
+          {/* <Route path="/shipDetail/:ID" component={shipDetail}/> */}
         </Switch>
         </div>
       </ConnectedRouter>
     </Provider>
+    </ThemeProvider>
+
   );
 }
 

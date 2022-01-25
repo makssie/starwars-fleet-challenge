@@ -7,13 +7,14 @@ import './home.css'
 
 const Home = () => (
   <div id="home" className="page">
+    <h1>Star Fleet Manager</h1>
     <div className="home-container">
-      <div>
+      <div style={{flexGrow: 2, paddingRight: 30}}>
         <Search />
         <ShipList />
       </div>
-      <div>
-        Frota
+      <div className="fleet-container">
+        <h2>Your Fleet</h2>
         <Fleet />
       </div>
       

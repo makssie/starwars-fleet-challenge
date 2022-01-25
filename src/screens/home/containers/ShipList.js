@@ -8,13 +8,11 @@ const renderShipList = (data, query) => {
   if (isEmpty(data)) {
     return null;
   }
-  let { results: starships , count: totalItems  } = data;
+  let { results: starships  } = data;
   return (
     <>
-      <h3>Search results for: {query}</h3>
-      <p>Total results: {totalItems}</p>
       <div className="ships-list">
-        {starships.map(ship =>  <Ship key={ship.url} ship={ship} />)} 
+        {starships.map((ship, index) =>  <Ship key={index} ship={ship} />)} 
       </div>
     </>
   )

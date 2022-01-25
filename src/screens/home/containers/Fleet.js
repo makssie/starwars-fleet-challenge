@@ -8,7 +8,7 @@ const renderShipList = (fleet) => {
   return (
     <>
       <div className="ships-list-fleet">
-        {fleet.map(ship => <FleetShip key={ship.url} starship={ship} />)}
+        {fleet.map((ship, index) => <FleetShip key={index} starship={ship} />)}
       </div>
     </>
   )

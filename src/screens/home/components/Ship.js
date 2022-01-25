@@ -33,15 +33,6 @@ const Ship = ({ addShipFleet, ship, fleet }) => {
       <ListItemText primary={`Line item ${name}`} />
       </ListItem>
 
-      {/* <Card> */}
-        {/* {imageLinks
-          ? <Card.Img variant="top" src={imageLinks.thumbnail} />
-          : null
-        } */}
-       
-          {/* <Card.Link href={infoLink} target="_blank" rel="noopener">Preview</Card.Link> */}
-          {/* <Link className="book" to={`${starship.url}`}>View</Link> */}
-      {/* </Card> */}
     </div>
   )
 }
