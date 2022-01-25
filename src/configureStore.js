@@ -7,16 +7,32 @@ import thunk from 'redux-thunk';
 // Create history
 export const history = createHashHistory();
 
-// Define on your own as per requirment
-const preloadedState = {};
+const localStorageMiddleware = ({getState}) => {
+  return (next) => (action) => {
+      const result = next(action);
+      localStorage.setItem('applicationState', JSON.stringify(
+          getState()
+      ));
+      return result;
+  };
+};
+
+const preloadedState = () => {
+  const data = localStorage.getItem('applicationState');
+  if (data) {
+      return JSON.parse(data);
+  }
+  return undefined;
+};
 
 const store = createStore(
   createRootReducer(history), // Root reducer with router state
-  preloadedState,
+  preloadedState(),
   composeWithDevTools(
     applyMiddleware(
       routerMiddleware(history),
-      thunk
+      thunk,
+      localStorageMiddleware
     ),
   )
 )

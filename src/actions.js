@@ -2,8 +2,11 @@ import axios from 'axios'
 import {
   REQUEST_SHIPS,
   RECEIVE_SHIPS,
-  ADD_SHIP_FLEET
+  ADD_SHIP_FLEET,
+  EDIT_SHIP_FLEET
 } from './actionTypes'
+import { useHistory } from "react-router-dom";
+
 
 export const requestShips = (query) => ({
   type: REQUEST_SHIPS,
@@ -20,6 +23,20 @@ export const addShip = ( payload ) => ({
   type: ADD_SHIP_FLEET,
   payload
 });
+
+export const editShip = (payload, index) => ({
+  type: EDIT_SHIP_FLEET,
+  index,
+  payload
+})
+
+export const editShipFleet = (ship, index) => {
+  return function(dispatch) {
+    dispatch(editShip(ship, index))
+    alert("Successfully passengers saved")
+
+  }
+}
 
 export const addShipFleet = (ship, index) => {
   return function(dispatch) {

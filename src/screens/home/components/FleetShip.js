@@ -35,6 +35,8 @@ const FleetShip = ({ starship, selectedNumber}) => {
 
 function percentageOccupancy(crew, passengers){
   let passengersNumber = passengers;
+
+  
   if(isNaN(passengers)) {
     passengersNumber = 0
   }
@@ -43,8 +45,11 @@ function percentageOccupancy(crew, passengers){
     return 100;
   }
 
-  const crewNumber = parseFloat(crew.replace(/,/g, ''));
-
+  let crewNumber = crew;
+  if(typeof crew === 'string'){
+    crewNumber = parseFloat(crew.replace(/,/g, ''));
+  }
+  
   const percentageOccupancy = (100 *  crewNumber) / passengersNumber;
 
   return percentageOccupancy > 100 ? 100 : percentageOccupancy

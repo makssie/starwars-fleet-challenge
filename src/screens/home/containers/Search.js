@@ -4,7 +4,7 @@ import React from 'react';
 import SearchIcon from "@mui/icons-material/Search";
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getShips } from '../actions'
+import { getShips } from '../../../actions'
 import debounce from 'lodash/debounce'
 import { IconButton, InputAdornment, TextField } from '@mui/material';
 
