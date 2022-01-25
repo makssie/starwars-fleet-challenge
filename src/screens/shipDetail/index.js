@@ -31,7 +31,6 @@ const ShipDetail = ({ match: { params }, fleet , editShipFleet}) =>
     const fleetUpdated = Object.assign(fleet, {
       crew: crewUpdated
     })
-    console.log(fleetUpdated)
     editShipFleet(fleetUpdated, index)
   }
 

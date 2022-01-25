@@ -13,7 +13,6 @@ const Ship = ({ addShipFleet, ship, fleet }) => {
   } = ship;
 
   const addShip = (starShipSelected) => {
-    console.log("starShipSelected", starShipSelected)
     addShipFleet(starShipSelected, fleet.length +1)  
   }
 
