@@ -67,9 +67,16 @@ function editPassengers(passengers, crew, action){
   if(typeof crew === 'string'){
     crewNumber = parseFloat(crew.replace(/,/g, ''));
   }
-  if(passengers < crewNumber){
+
+  if(action ==='add' && passengers <= crewNumber){
+    console.log(crewNumber)
     return crewNumber
   }
+
+  if(action !=='add' && crewNumber < 1){
+    return 0
+  }
+
 
   return action === 'add' ? crewNumber + 1 : crewNumber - 1
 }
